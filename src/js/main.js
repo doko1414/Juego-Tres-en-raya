@@ -12,7 +12,7 @@ window.addEventListener('load', ()=>{
     const isFull=()=>{
         const CP_BOXES=[...GAME].flat(Infinity);
         const isTotal=CP_BOXES.every(box=>box!==null);
-        console.log(CP_BOXES);
+        return isTotal;
     }
 
     const checkGame= ()=>{
@@ -20,6 +20,38 @@ window.addEventListener('load', ()=>{
         const isWinnerRowTwo=[GAME[1][0],GAME[1][1],GAME[1][2]].every(item=>item===GAME[1][0]);
         const isWinnerRowThree=[GAME[2][0],GAME[2][1],GAME[2][2]].every(item=>item===GAME[2][0]);
         
+        const isWinnerColOne=[GAME[0][0],GAME[1][0],GAME[2][0]].every(item=>item===GAME[0][0]);
+        const isWinnerColTwo=[GAME[0][1],GAME[1][1],GAME[2][2]].every(item=>item===GAME[1][0]);
+        const isWinnerColThree=[GAME[0][2],GAME[1][2],GAME[2][2]].every(item=>item===GAME[2][0]);
+
+        const isWinnerDiagonalOne=[GAME[0][0],GAME[1][1],GAME[2][2]].every(item=>item===GAME[0][0]);
+        const isWinnerDiagonalTwo=[GAME[0][2],GAME[1][1],GAME[2][0]].every(item=>item===GAME[0][2]);
+
+        if(isWinnerRowOne || isWinnerColOne){
+            alert('1');
+            window.location.reload();
+            return;
+        }
+        if(isWinnerRowTwo || isWinnerColTwo){
+            alert('2');
+            window.location.reload();
+            return;
+        }
+        if(isWinnerRowThree || isWinnerColThree){
+            alert('3');
+            window.location.reload();
+            return;
+        }
+        if(isWinnerDiagonalOne){
+            alert('4');
+            window.location.reload();
+            return;
+        }
+        if (isWinnerDiagonalTwo){
+            alert('5')
+            window.location.reload();
+            return;
+        }
     }
 
     BOXES.forEach((box)=>{
